@@ -1,14 +1,39 @@
-import {createSupabaseClient} from "@/lib/supabase";
 
-const CompanionsLibrary = async() => {
+import {getAllCompanions} from "@/lib/actions/companion.actions";
+import CompanionCard from "@/components/CompanionCard";
+import {getSubjectColor} from "@/lib/utils";
+import SearchInput from "@/app/companions/SearchInput";
+import SubjectFilter from "@/components/SubjectFilter";
 
-  const supabase=createSupabaseClient();
-  const {data,error}=await supabase.from('companions').select();
-  if(error || !data){
-    throw new Error(error?.message || 'Failed to fetch all companions');
-  }
+const CompanionsLibrary = async({searchParams}:SearchParams) => {
+  const filters=await searchParams;
+  const subject=filters.subject?filters.subject:"";
+  const topic=filters.topic?filters.topic:"";
+
+  const companions=await getAllCompanions({subject,topic});
+  console.log(companions);
+
   return (
-    <div>This is companion Library</div>
+    <main className="">
+      <section className="flex justify-between gap-4 max-sm:flex-col">
+        <h1 className="">Companion Library</h1>
+        <div className="flex gap-4">
+          <SearchInput/>
+          <SubjectFilter/>
+        </div>
+
+        <section className="companions-grid">
+          {
+            companions.map((comp)=>{
+              return(
+                  <CompanionCard key={comp.id} {...comp} color={getSubjectColor(comp.subject)}/>
+              )
+            })
+          }
+        </section>
+      </section>
+
+    </main>
   );
 }
 
