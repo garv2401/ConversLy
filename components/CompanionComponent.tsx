@@ -6,6 +6,7 @@ import Image from "next/image";
 import Lottie, {LottieRefCurrentProps} from "lottie-react";
 import soundwaves from '@/constants/soundwaves.json';
 import { CreateAssistantDTO } from "@vapi-ai/web/dist/api";
+import {addToSessionHistory} from "@/lib/actions/companion.actions";
 
 enum CallStatus{
     INACTIVE='INACTIVE',
@@ -38,14 +39,15 @@ const CompanionComponent = ({companionId,userName,userImage,name,subject,topic,s
             setCallStatus(CallStatus.ACTIVE)
         }
         const onCallEnd=()=>{
-            setCallStatus(CallStatus.FINISHED)
+            setCallStatus(CallStatus.FINISHED);
+            //add to session history with ID
+            addToSessionHistory(companionId);
         }
 
         const onMessage=(message:Message)=>{
             if(message.type==='transcript' && message.transcriptType==='final'){
                 const newMessage={role:message.role,content:message.transcript}
                 setMessages((prev)=>[newMessage,...prev]);
-                console.log(messages);
             }
 
         }
@@ -89,7 +91,6 @@ const CompanionComponent = ({companionId,userName,userImage,name,subject,topic,s
             clientMessages: ["transcript"] as unknown as CreateAssistantDTO["clientMessages"],
             serverMessages: [] as unknown as CreateAssistantDTO["serverMessages"],
         }
-        //@ts-expect-error
         await vapi.start(configureAssistant(voice,style),assistantOverrides);
 
     }
