@@ -9,7 +9,7 @@ import {getSubjectColor} from "@/lib/utils";
 const Home = async() => {
   const companions=await getAllCompanions({limit:3});
   const recentSessionCompanions=await getRecentSessions(10);
-  //console.log("recent companions:",recentSessionCompanions);
+  //console.log("companions:",companions);
 
 
   return (
