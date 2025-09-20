@@ -151,10 +151,10 @@ const CompanionComponent = ({companionId,userName,userImage,name,subject,topic,s
             </div>
         </section>
 
-        <section className="transcript">
+        <section className="transcript min-h-60">
             <div className="transcript-message no-scrollbar">
                 {
-                    messages.map((message,index)=>{
+                    messages.length!==0?messages.map((message,index)=>{
                         if(message.role==='assistant'){
                             return(
                                 <p key={index} className="max-sm:text-sm" >
@@ -168,7 +168,9 @@ const CompanionComponent = ({companionId,userName,userImage,name,subject,topic,s
                                 </p>
                             )
                         }
-                    })
+                    }):(
+                        <p className="text-primary max-sm:text-sm">No conversation yet...</p>
+                    )
                 }
             </div>
             <div className="transcript-fade"/>

@@ -40,7 +40,6 @@ export const createCompanion = async (formData: CreateCompanion) => {
 //
 //     return companions;
 // }
-
 export const getAllCompanions = async ({
                                            limit = 10,
                                            page = 1,
@@ -50,7 +49,7 @@ export const getAllCompanions = async ({
     const { userId } = await auth();
     const supabase = createSupabaseClient();
 
-    //Fetch companions
+    // Fetch companions
     let query = supabase.from("companions").select();
 
     if (subject && topic) {
@@ -67,27 +66,34 @@ export const getAllCompanions = async ({
 
     const { data: companions, error } = await query;
     if (error) throw new Error(error.message);
+    if (!companions?.length) return [];
 
-    if (!companions?.length || !userId) return companions;
-
-    //Fetch bookmarks for current user
-    const { data: bookmarks, error: bookmarksError } = await supabase
-        .from("bookmarks")
-        .select("companion_id")
-        .eq("user_id", userId);
-
-    if (bookmarksError) throw new Error(bookmarksError.message);
-
-    const bookmarkedIds = new Set(bookmarks.map((b) => b.companion_id));
-
-    //Enrich companions with `bookmarked: boolean`
-    const enriched = companions.map((c) => ({
+    // Default all companions with bookmarked = false
+    let enriched = companions.map((c) => ({
         ...c,
-        bookmarked: bookmarkedIds.has(c.id),
+        bookmarked: false,
     }));
+
+    // Only fetch bookmarks if user exists
+    if (userId) {
+        const { data: bookmarks, error: bookmarksError } = await supabase
+            .from("bookmarks")
+            .select("companion_id")
+            .eq("user_id", userId);
+
+        if (bookmarksError) throw new Error(bookmarksError.message);
+
+        const bookmarkedIds = new Set(bookmarks.map((b) => b.companion_id));
+
+        enriched = companions.map((c) => ({
+            ...c,
+            bookmarked: bookmarkedIds.has(c.id),
+        }));
+    }
 
     return enriched;
 };
+
 
 
 export const getCompanion = async (id: string) => {

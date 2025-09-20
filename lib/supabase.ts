@@ -1,5 +1,6 @@
 import {createClient} from "@supabase/supabase-js";
 import {auth} from "@clerk/nextjs/server";
+// { cookies } from "next/headers";
 
 export const createSupabaseClient=()=>{
     return createClient(
