@@ -13,11 +13,18 @@ import {
 } from "@/lib/actions/companion.actions";
 import Image from "next/image";
 import CompanionsList from "@/components/CompanionsList";
+import RecentSessionCompanionList from "@/components/RecentSessionCompanionsList";
 
 const Profile = async () => {
     const user = await currentUser();
 
     if (!user) redirect("/sign-in");
+
+    const identities = user.externalAccounts;
+
+    const isGoogleUser = identities.some(
+        (account) => account.provider === "oauth_google"
+    );
 
     const companions = await getUserCompanions(user.id);
     const sessionHistory = await getUserSessions(user.id);
@@ -29,14 +36,22 @@ const Profile = async () => {
                 <div className="flex gap-4 items-center">
                     <Image
                         src={user.imageUrl}
-                        alt={user.firstName!}
+                        alt={user.firstName?user.firstName:user.username}
                         width={110}
                         height={110}
                     />
                     <div className="flex flex-col gap-2">
-                        <h1 className="font-bold text-2xl">
-                            {user.firstName} {user.lastName}
-                        </h1>
+                        {
+                            isGoogleUser?(
+                                <h1 className="font-bold text-2xl">
+                                    {user.firstName} {user.lastName}
+                                </h1>
+                            ):(
+                                <h1 className="font-bold text-2xl">
+                                    {user.username}
+                                </h1>
+                            )
+                        }
                         <p className="text-sm text-muted-foreground">
                             {user.emailAddresses[0].emailAddress}
                         </p>
@@ -81,9 +96,9 @@ const Profile = async () => {
                         Recent Sessions
                     </AccordionTrigger>
                     <AccordionContent>
-                        <CompanionsList
+                        <RecentSessionCompanionList
                             title="Recent Sessions"
-                            companions={sessionHistory}
+                            recent={sessionHistory}
                         />
                     </AccordionContent>
                 </AccordionItem>

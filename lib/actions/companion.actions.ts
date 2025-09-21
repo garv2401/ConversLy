@@ -122,33 +122,78 @@ export const addToSessionHistory = async (companionId: string) => {
 
     return data;
 }
+//
+// export const getRecentSessions = async (limit = 10) => {
+//     const supabase = createSupabaseClient();
+//     const { data, error } = await supabase
+//         .from('session_history')
+//         .select(`companions:companion_id (*)`)
+//         .order('created_at', { ascending: false })
+//         .limit(limit)
+//
+//     if(error) throw new Error(error.message);
+//
+//     return data.map(({ companions }) => companions);
+// }
 
 export const getRecentSessions = async (limit = 10) => {
     const supabase = createSupabaseClient();
+
     const { data, error } = await supabase
-        .from('session_history')
-        .select(`companions:companion_id (*)`)
-        .order('created_at', { ascending: false })
-        .limit(limit)
+        .from("session_history")
+        .select(`
+      id,
+      companions:companion_id (*)
+    `)
+        .order("created_at", { ascending: false })
+        .limit(limit);
 
-    if(error) throw new Error(error.message);
+    if (error) throw new Error(error.message);
 
-    return data.map(({ companions }) => companions);
-}
+    return data.map(({ id, companions }) => ({
+        sessionId: id,
+        companion: companions,
+    }));
+};
+
+
+
+//
+// export const getUserSessions = async (userId: string, limit = 10) => {
+//     const supabase = createSupabaseClient();
+//     const { data, error } = await supabase
+//         .from('session_history')
+//         .select(`companions:companion_id (*)`)
+//         .eq('user_id', userId)
+//         .order('created_at', { ascending: false })
+//         .limit(limit)
+//
+//     if(error) throw new Error(error.message);
+//
+//     return data.map(({ companions }) => companions);
+// }
 
 export const getUserSessions = async (userId: string, limit = 10) => {
     const supabase = createSupabaseClient();
+
     const { data, error } = await supabase
-        .from('session_history')
-        .select(`companions:companion_id (*)`)
-        .eq('user_id', userId)
-        .order('created_at', { ascending: false })
-        .limit(limit)
+        .from("session_history")
+        .select(`
+            id,
+            companions:companion_id (*)
+        `)
+        .eq("user_id", userId)
+        .order("created_at", { ascending: false })
+        .limit(limit);
 
-    if(error) throw new Error(error.message);
+    if (error) throw new Error(error.message);
 
-    return data.map(({ companions }) => companions);
-}
+    return data.map(({ id, companions }) => ({
+        sessionId: id,
+        companion: companions,
+    }));
+};
+
 
 export const getUserCompanions = async (userId: string) => {
     const supabase = createSupabaseClient();

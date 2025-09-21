@@ -151,7 +151,7 @@ const CompanionComponent = ({companionId,userName,userImage,name,subject,topic,s
             </div>
         </section>
 
-        <section className="transcript min-h-60">
+        <section className="transcript">
             <div className="transcript-message no-scrollbar">
                 {
                     messages.length!==0?messages.map((message,index)=>{
