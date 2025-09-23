@@ -6,10 +6,10 @@ import {SignInButton,SignedIn,SignedOut,UserButton} from "@clerk/nextjs";
 const Navbar = () => {
   return (
 
-        <nav className="navbar">
+        <nav className="navbar border border-b-fuchsia-100">
           <Link href="/">
             <div className="flex items-center gap-2.5 cursor-pointer">
-              <Image src="/images/logo.svg" width={46} height={44} alt="logo"/>
+              <Image src="/images/Conversly-logo-c-1.jpg" width={100} height={100} alt="logo"/>
             </div>
           </Link>
 

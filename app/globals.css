@@ -5,7 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --primary: #fe5933;
+  /*--primary: #fe5933;*/
+  --primary: #da61fb;
 
   --cta: #2c2c2c;
   --cta-gold: #fccc41;
@@ -146,7 +147,7 @@ body {
     @apply flex flex-wrap gap-4 w-full max-md:justify-center justify-between;
   }
   .companion-card {
-    @apply flex flex-col rounded-4xl border border-black px-4 py-4 gap-5 w-full min-lg:max-w-[410px] justify-between;
+    @apply flex flex-col rounded-4xl border border-fuchsia-300 px-4 py-4 gap-5 w-full min-lg:max-w-[410px] justify-between;
   }
   .subject-badge {
     @apply bg-black text-white rounded-4xl text-sm px-2 py-1 capitalize;
@@ -170,13 +171,13 @@ body {
     @apply bg-primary text-white rounded-xl cursor-pointer px-4 py-2 flex items-center gap-2;
   }
   .navbar {
-    @apply flex items-center justify-between mx-auto w-full px-14 py-4 bg-white max-sm:px-4;
+    @apply flex items-center justify-between mx-auto w-full px-14 py-4  bg-white max-sm:px-4 ;
   }
   .btn-signin {
     @apply border border-black rounded-4xl px-4 py-2.5 text-sm font-semibold flex items-center gap-2 cursor-pointer;
   }
   .companion-list {
-    @apply rounded-4xl border border-black px-7 pt-7 pb-10 max-lg:w-full bg-white;
+    @apply rounded-4xl border border-fuchsia-300 px-7 pt-7 pb-10 max-lg:w-full bg-white;
   }
   .companion-limit {
     @apply items-center justify-center flex flex-col gap-4 w-full min-2xl:w-1/2 pt-20 text-center;

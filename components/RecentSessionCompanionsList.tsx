@@ -22,7 +22,7 @@ interface RecentSessionCompanionListProps {
 const RecentSessionCompanionList = ({ title, recent, classNames }: RecentSessionCompanionListProps) => {
     return (
         <article className={cn("companion-list", classNames)}>
-            <h2 className="font-bold text-3xl mb-4">{title}</h2>
+            <h2 className="font-bold text-3xl mb-4 text-purple-400">{title}</h2>
 
             <Table>
                 <TableHeader>
