@@ -1,76 +1,69 @@
-<div align="center">
-<img src="https://www.google.com/search?q=https://placehold.co/600x300/7c3aed/ffffff%3Ftext%3DConversly" alt="Conversly Logo" width="500"/>
-<h1 align="center">Conversly AI SaaS Platform</h1>
-</div>
+# ConversLy
 
-Conversly is an AI-powered SaaS platform for intelligent customer conversations, offering solutions for support, engagement, and analytics. This repository contains the full source code.
+**ConversLy** is an AI-powered SaaS application where users can create, customize, and interact with their own AI companions. It's built to provide personalized, voice-based learning and conversation sessions tailored to the user's needs.
 
-✨ Features
-AI Chatbots: Deploy intelligent, context-aware chatbots for 24/7 support.
+## Features
 
-Advanced Analytics: Monitor engagement and user satisfaction from a central dashboard.
+- **Custom AI Companions:** Users can create companions with specific personas (formal, male, female), assign topics for discussion, and set time limits for sessions.
+- **Interactive Voice Sessions:** Engage in real-time, voice-based conversations with AI companions, powered by Vapi.
+- **Live Transcription:** View a live transcript of the ongoing conversation with your companion for better understanding and review.
+- **Bookmark & Search:** Easily bookmark your favorite companions and use the search functionality to discover other companions on the platform.
+- **Subscription Plans:** Access the platform through multiple tiers, including a free plan to get started and paid plans for extended features.
+- **Performance Monitoring:** Integrated with Sentry for robust error tracking and performance management.
 
-Seamless Integrations: Connect with third-party CRMs and helpdesk services.
+## Tech Stack
 
-Customizable UI: Adapt the chat widget's appearance to match your brand.
+- **Framework:** Next.js
+- **Backend & Database:** Supabase
+- **Authentication:** Clerk
+- **Voice AI:** Vapi
+- **Monitoring:** Sentry
+- **Frontend:** React, TypeScript, Tailwind CSS
+- **Deployment:** Vercel
 
-Self-Learning Models: AI improves its accuracy and response quality over time.
+## Getting Started
 
-Secure & Scalable: Enterprise-grade security and architecture.
+### 1. Clone the repository
 
-🛠️ Tech Stack
-Frontend: Next.js, React, TypeScript, Tailwind CSS
-
-Backend: Next.js API Routes, Node.js
-
-Database: PostgreSQL, Prisma
-
-AI: OpenAI API or other LLM providers
-
-Authentication: NextAuth.js
-
-Deployment: Vercel
-
-🏁 Getting Started
-Prerequisites
-Node.js (v18.0 or later)
-
-pnpm
-
-PostgreSQL instance
-
-Installation
-Clone the repository:
-
-git clone [https://github.com/your-username/conversly.git](https://github.com/your-username/conversly.git)
+```bash
+git clone [https://github.com/yourusername/conversly.git](https://github.com/yourusername/conversly.git)
 cd conversly
+```
 
-Install dependencies:
+### 2. Install dependencies
 
-pnpm install
+```bash
+npm install
+```
 
-Setup environment variables:
-Create a .env.local file from the example template.
+### 3. Set up environment variables
 
-cp .env.example .env.local
+```bash
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 
-Populate .env.local with your database, authentication, and AI provider credentials.
+# Clerk Authentication
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
 
-Apply database schema:
+# Vapi Voice AI
+VAPI_API_KEY=your_vapi_api_key
 
-pnpm prisma db push
+# Sentry Monitoring
+SENTRY_DSN=your_sentry_dsn
 
-Run the development server:
+# App URL for webhooks and redirects
+NEXT_PUBLIC_APP_URL="http://localhost:3000"
+```
+### 4. Set up the database
 
-pnpm dev
+```bash
+Set up your database schema (tables, columns, and relationships) directly within your Supabase project dashboard.
+```
 
-Navigate to http://localhost:3000 to view the application.
+### 5. Start the development server
 
-🚀 Deployment
-This application is optimized for deployment on the Vercel Platform. For detailed instructions, refer to the official Next.js deployment documentation.
-
-🤝 Contributing
-We welcome contributions. Please fork the repository, create a feature branch, and open a pull request with your changes. For significant modifications, please open an issue first to discuss what you would like to change.
-
-📄 License
-This project is licensed under the MIT License. See the LICENSE file for details.
+```bash
+npm run dev
+```
