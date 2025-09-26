@@ -1,6 +1,5 @@
 <div align="center">
 <!-- You can replace this with your own logo -->
-<img src="https://www.google.com/search?q=https://placehold.co/600x300/7c3aed/ffffff%3Ftext%3DConversly" alt="Conversly Logo" width="600"/>
 
 <h1 align="center">Conversly - AI SaaS Platform</h1>
 
@@ -8,14 +7,7 @@
 Engage, understand, and support your users with our intelligent, AI-powered conversation platform.
 </p>
 
-<!-- Badges -->
 
-<p align="center">
-<a href="https://www.google.com/search?q=https://github.com/your-username/conversly/actions/workflows/ci.yml"><img src="https://www.google.com/search?q=https://img.shields.io/github/actions/workflow/status/your-username/conversly/ci.yml%3Fbranch%3Dmain%26style%3Dfor-the-badge" alt="Build Status"></a>
-<a href="https://www.google.com/search?q=https://github.com/your-username/conversly/blob/main/LICENSE"><img src="https://www.google.com/search?q=https://img.shields.io/github/license/your-username/conversly%3Fstyle%3Dfor-the-badge" alt="License"></a>
-<a href="https://www.google.com/search?q=https://twitter.com/your-twitter-handle"><img src="https://www.google.com/search?q=https://img.shields.io/twitter/follow/your-twitter-handle%3Fstyle%3Dfor-the-badge%26logo%3Dtwitter" alt="Follow on Twitter"></a>
-</p>
-</div>
 
 🚀 Overview
 Conversly is a powerful AI SaaS platform designed to revolutionize customer interactions. It leverages state-of-the-art language models to provide seamless, intelligent, and context-aware conversations. From automated customer support to lead generation and user engagement, Conversly is the all-in-one solution for modern businesses.
