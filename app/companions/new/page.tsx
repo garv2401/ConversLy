@@ -34,9 +34,9 @@ const NewCompanion = async () => {
                         className="mb-4"
                     />
                     <div className="cta-badge mb-2">Upgrade Your Plan</div>
-                    <h1 className="text-xl font-semibold">You've Reached Your Limit</h1>
+                    <h1 className="text-xl font-semibold">You have Reached Your Limit</h1>
                     <p className="mb-4 text-sm leading-relaxed text-gray-600">
-                        You've reached your companion limit. Upgrade to create more
+                        You have reached your companion limit. Upgrade to create more
                         companions and access premium features.
                     </p>
                     <Link
