@@ -22,7 +22,6 @@ const CompanionSession =async ({params}:CompanionSessionPageProps) => {
   if(!name){
     redirect('/companions')
   }
-  //console.log(companion);
 
   return (
     <main>

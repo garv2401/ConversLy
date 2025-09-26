@@ -17,7 +17,7 @@ const Navbar = () => {
               <NavItems/>
               <SignedOut>
                   <SignInButton>
-                      <button className="btn-signin">Sign In</button>
+                      <button className="btn-signin border border-purple-400 text-purple-400">Sign In</button>
                   </SignInButton>
               </SignedOut>
 
